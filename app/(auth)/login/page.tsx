@@ -23,15 +23,25 @@ function Page() {
             flexDirection: "column",
             justifyContent: "center",
             gap: "10px",
+            padding: "20px",
+            height: "100vh",
           }}
         >
           <Form.Label htmlFor="email">Email</Form.Label>
           <Form.Control className="FormControl" asChild>
-            <input type="email" {...register("email")} />
+            <input
+              type="email"
+              className="b-border-0 border-gray-300 rounded-md p-2"
+              {...register("email")}
+            />
           </Form.Control>
           <Form.Label htmlFor="password">Password</Form.Label>
           <Form.Control className="FormControl" asChild>
-            <input type="password" {...register("password")} />
+            <input
+              className="b-border-0 border-gray-300 rounded-md p-2"
+              type="password"
+              {...register("password")}
+            />
           </Form.Control>
           <Form.Field className="FormField" name="password">
             <Form.Control className="FormControl" asChild>
@@ -39,7 +49,7 @@ function Page() {
                 variant="soft"
                 color="blue"
                 type="submit"
-                className="w-full"
+                className="w-full cursor-pointer"
               >
                 Login
               </Button>
