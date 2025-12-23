@@ -35,7 +35,8 @@ function Page() {
             <Form.Control className="FormControl" asChild>
               <input
                 style={{
-                  border: "2px solid #e0e0e0",
+                  border: "2px solid gray",
+                  color: "black",
                   borderRadius: "8px",
                   padding: "8px",
                   backgroundColor: "white",
@@ -49,10 +50,11 @@ function Page() {
             <Form.Control className="FormControl" asChild>
               <input
                 style={{
-                  border: "2px solid #e0e0e0",
+                  border: "2px solid gray",
                   borderRadius: "8px",
                   padding: "8px",
                   backgroundColor: "white",
+                  color: "black",
                 }}
                 className="b-border-2 border-gray-300 rounded-md p-2"
                 type="password"
