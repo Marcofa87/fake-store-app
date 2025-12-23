@@ -15,7 +15,7 @@ function Page() {
   };
   return (
     <>
-      <h1 className="text-2xl font-bold text-center mt-32 ">Fake Store App</h1>
+      <h1 className="text-2xl font-bold text-center mt-16">Fake Store App</h1>
       <p style={{ textAlign: "center", marginTop: "20px" }}>
         Login to your account to continue
       </p>
@@ -32,7 +32,7 @@ function Page() {
             }}
           >
             <Form.Label
-              style={{ width: "100%", textAlign: "left" }}
+              style={{ width: "100%", textAlign: "left", marginBottom: "10px" }}
               htmlFor="email"
             >
               Email
@@ -45,9 +45,10 @@ function Page() {
                   borderRadius: "8px",
                   padding: "8px",
                   backgroundColor: "white",
+                  marginBottom: "10px",
                 }}
                 type="email"
-                className="b-border-2 border-gray-300 rounded-md p-2"
+                className="b-border-2 border-gray-300 rounded-md"
                 {...register("email")}
               />
             </Form.Control>
@@ -61,12 +62,13 @@ function Page() {
               <input
                 style={{
                   border: "2px solid gray",
+                  color: "black",
                   borderRadius: "8px",
                   padding: "8px",
                   backgroundColor: "white",
-                  color: "black",
+                  marginBottom: "10px",
                 }}
-                className="b-border-2 border-gray-300 rounded-md p-2"
+                className="b-border-2 border-gray-300 rounded-md"
                 type="password"
                 {...register("password")}
               />
@@ -84,6 +86,7 @@ function Page() {
                     cursor: "pointer",
                   }}
                   type="submit"
+                  onSubmit={handleSubmit(onSubmit)}
                 >
                   Login
                 </Button>
