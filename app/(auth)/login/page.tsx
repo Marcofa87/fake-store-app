@@ -82,8 +82,9 @@ function Page() {
                     borderRadius: "8px",
                     padding: "10px",
                     width: "200px",
-                    marginTop: "40px",
+                    marginTop: "30",
                     cursor: "pointer",
+                    height: "40px",
                   }}
                   type="submit"
                   onSubmit={handleSubmit(onSubmit)}
