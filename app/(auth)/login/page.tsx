@@ -31,7 +31,12 @@ function Page() {
               padding: "20px",
             }}
           >
-            <Form.Label htmlFor="email">Email</Form.Label>
+            <Form.Label
+              style={{ width: "100%", textAlign: "left" }}
+              htmlFor="email"
+            >
+              Email
+            </Form.Label>
             <Form.Control className="FormControl" asChild>
               <input
                 style={{
@@ -46,7 +51,12 @@ function Page() {
                 {...register("email")}
               />
             </Form.Control>
-            <Form.Label htmlFor="password">Password</Form.Label>
+            <Form.Label
+              style={{ width: "100%", textAlign: "left" }}
+              htmlFor="password"
+            >
+              Password
+            </Form.Label>
             <Form.Control className="FormControl" asChild>
               <input
                 style={{
