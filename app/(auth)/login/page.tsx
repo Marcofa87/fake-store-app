@@ -46,6 +46,7 @@ function Page() {
                   padding: "8px",
                   backgroundColor: "white",
                   marginBottom: "10px",
+                  width: "300px",
                 }}
                 type="email"
                 className="b-border-2 border-gray-300 rounded-md"
@@ -67,6 +68,7 @@ function Page() {
                   padding: "8px",
                   backgroundColor: "white",
                   marginBottom: "10px",
+                  width: "300px",
                 }}
                 className="b-border-2 border-gray-300 rounded-md"
                 type="password"
@@ -81,8 +83,8 @@ function Page() {
                     backgroundColor: "blue",
                     borderRadius: "8px",
                     padding: "10px",
-                    width: "200px",
-                    marginTop: "30",
+                    width: "300px",
+                    marginTop: "20px",
                     cursor: "pointer",
                     height: "40px",
                   }}
