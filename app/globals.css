@@ -3,8 +3,12 @@
 
 
 :root {
-  --background: #ffffff;
+  --background: #111927;
   --foreground: #171717;
+  
+  
+  /* Variabili Radix UI Themes per personalizzare lo sfondo */
+  --color-page-background: var(--background);
 }
 
 @theme inline {
@@ -18,11 +22,12 @@
   :root {
     --background: #0a0a0a;
     --foreground: #ededed;
+    --color-page-background: var(--background);
   }
 }
 
 body {
-  background: var(--background);
+  background: var(--color-page-background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
