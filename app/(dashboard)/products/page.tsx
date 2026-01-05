@@ -43,9 +43,9 @@ export default async function ProductsPage() {
               <Image
                 src={product.category.image}
                 alt={product.title}
-                className="w-full h-full object-cover hover:scale-110 transition-transform duration-300"
-                width={300}
-                height={300}
+                fill
+                className="object-cover hover:scale-110 transition-transform duration-300"
+                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
               />
             </div>
             <div className="p-4 sm:p-5 flex flex-col flex-grow">
