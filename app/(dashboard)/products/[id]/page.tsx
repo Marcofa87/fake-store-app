@@ -1,3 +1,5 @@
+import { notFound } from "next/navigation";
+
 type Product = {
   id: number;
   title: string;
@@ -9,12 +11,16 @@ type Product = {
     image: string;
   };
 };
+
 async function getProductsId(id: string): Promise<Product> {
   const response = await fetch(`http://localhost:3000/api/products/${id}`, {
     cache: "no-store",
   });
 
   if (!response.ok) {
+    if (response.status === 404 || response.status === 400) {
+      notFound();
+    }
     throw new Error("Failed to fetch product");
   }
 
@@ -28,6 +34,6 @@ export default async function ProductsIdPage({
 }) {
   const { id } = await params;
   const product = await getProductsId(id);
-  console.log(product);
+
   return <div>{product.title}</div>;
 }

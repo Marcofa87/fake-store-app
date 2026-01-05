@@ -1,4 +1,6 @@
 import Image from "next/image";
+import Link from "next/link";
+
 type Product = {
   id: number;
   category: {
@@ -35,8 +37,9 @@ export default async function ProductsPage() {
       </h1>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8">
         {products.map((product: Product) => (
-          <div
+          <Link
             key={product.id}
+            href={`/products/${product.id}`}
             className="bg-white rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 overflow-hidden cursor-pointer flex flex-col group"
           >
             <div className="relative w-full h-48 overflow-hidden bg-gray-100">
@@ -61,7 +64,7 @@ export default async function ProductsPage() {
                 </p>
               </div>
             </div>
-          </div>
+          </Link>
         ))}
       </div>
     </div>
