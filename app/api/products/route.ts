@@ -15,7 +15,7 @@ export async function GET() {
     }
 
     const products = await response.json();
-    console.log(products);
+
     return NextResponse.json(products);
   } catch (error) {
     return NextResponse.json(

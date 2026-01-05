@@ -28,7 +28,6 @@ async function getProducts() {
 
 export default async function ProductsPage() {
   const products = await getProducts();
-  console.log(products);
 
   return (
     <div className="min-h-screen bg-gray-50 p-4 sm:p-6 lg:p-8">
