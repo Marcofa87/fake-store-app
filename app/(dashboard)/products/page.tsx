@@ -48,7 +48,7 @@ export default async function ProductsPage() {
                 sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
               />
             </div>
-            <div className="p-4 sm:p-5 flex flex-col flex-grow">
+            <div className="p-4 sm:p-5 flex flex-col grow">
               <h2 className="text-lg font-semibold mb-2 text-gray-900 line-clamp-2">
                 {product.title}
               </h2>
