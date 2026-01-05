@@ -28,22 +28,34 @@ export default async function ProductsPage() {
   console.log(products);
 
   return (
-    <div className="p-4 sm:p-6 lg:p-8">
-      <h1 className="mb-6">Products</h1>
+    <div className="min-h-screen bg-gray-50 p-4 sm:p-6 lg:p-8">
+      <h1 className="text-3xl font-bold mb-8 text-gray-900">Products</h1>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8">
         {products.map((product: Product) => (
           <div
             key={product.id}
-            className="border-2 border-gray-300 rounded-md p-4 sm:p-6"
+            className="bg-white rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 overflow-hidden cursor-pointer flex flex-col group"
           >
-            <img
-              src={product.category.image}
-              alt={product.title}
-              className="w-full h-48 object-cover mb-4"
-            />
-            <h2 className="text-lg font-bold mb-2">{product.title}</h2>
-            <p className="text-sm text-gray-500 mb-2">{product.description}</p>
-            <p className="text-sm text-gray-500">{product.price}</p>
+            <div className="relative w-full h-48 overflow-hidden bg-gray-100">
+              <img
+                src={product.category.image}
+                alt={product.title}
+                className="w-full h-full object-cover hover:scale-110 transition-transform duration-300"
+              />
+            </div>
+            <div className="p-4 sm:p-5 flex flex-col flex-grow">
+              <h2 className="text-lg font-semibold mb-2 text-gray-900 line-clamp-2">
+                {product.title}
+              </h2>
+              <p className="text-sm text-gray-600 mb-4 line-clamp-2 grow">
+                {product.description}
+              </p>
+              <div className="mt-auto pt-3 border-t border-gray-100">
+                <p className="text-xl font-bold text-blue-600">
+                  €{product.price.toFixed(2)}
+                </p>
+              </div>
+            </div>
           </div>
         ))}
       </div>
