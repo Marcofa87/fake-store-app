@@ -1,3 +1,4 @@
+import Image from "next/image";
 type Product = {
   id: number;
   category: {
@@ -39,10 +40,12 @@ export default async function ProductsPage() {
             className="bg-white rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 overflow-hidden cursor-pointer flex flex-col group"
           >
             <div className="relative w-full h-48 overflow-hidden bg-gray-100">
-              <img
+              <Image
                 src={product.category.image}
                 alt={product.title}
                 className="w-full h-full object-cover hover:scale-110 transition-transform duration-300"
+                width={300}
+                height={300}
               />
             </div>
             <div className="p-4 sm:p-5 flex flex-col flex-grow">
