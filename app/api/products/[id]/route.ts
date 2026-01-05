@@ -5,10 +5,11 @@ const API_BASE_URL = "https://api.escuelajs.co/api/v1";
 
 export async function GET(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
-    const response = await fetch(`${API_BASE_URL}/products/${params.id}`, {
+    const { id } = await params;
+    const response = await fetch(`${API_BASE_URL}/products/${id}`, {
       cache: "no-store",
     });
 
