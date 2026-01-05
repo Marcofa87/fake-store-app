@@ -15,7 +15,6 @@ export async function GET() {
     }
 
     const products = await response.json();
-
     return NextResponse.json(products);
   } catch (error) {
     return NextResponse.json(
