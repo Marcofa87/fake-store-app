@@ -54,7 +54,7 @@ export default async function ProductsIdPage({
   const product = await getProductsId(id);
 
   return (
-    <div className="relative max-w-md rounded-xl bg-gradient-to-r from-neutral-600 to-violet-300 pt-0 shadow-lg">
+    <div className="relative max-w-md rounded-xl bg-linear-to-r from-neutral-600 to-violet-300 pt-0 shadow-lg">
       <div className="flex h-60 items-center justify-center">
         <Image
           src={product.image}
