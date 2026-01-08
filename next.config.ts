@@ -13,47 +13,7 @@ const nextConfig: NextConfig = {
       },
       {
         protocol: "https",
-        hostname: "api.escuelajs.co",
-      },
-      {
-        protocol: "https",
-        hostname: "*.cloudinary.com",
-      },
-      {
-        protocol: "https",
-        hostname: "res.cloudinary.com",
-      },
-      {
-        protocol: "https",
-        hostname: "placeimg.com",
-      },
-      {
-        protocol: "https",
-        hostname: "*.corsproxy.io",
-      },
-      {
-        protocol: "https",
-        hostname: "corsproxy.io",
-      },
-      {
-        protocol: "https",
-        hostname: "*.gstatic.com",
-      },
-      {
-        protocol: "https",
-        hostname: "encrypted-tbn0.gstatic.com",
-      },
-      {
-        protocol: "https",
-        hostname: "placehold.co",
-      },
-      {
-        protocol: "https",
-        hostname: "*.unsplash.com",
-      },
-      {
-        protocol: "https",
-        hostname: "images.unsplash.com",
+        hostname: "fakestoreapi.com",
       },
     ],
   },

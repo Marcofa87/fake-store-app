@@ -17,15 +17,15 @@ import {
 import { cn } from "@/lib/utils";
 
 type Product = {
-  images: string[];
   id: number;
   title: string;
-  description: string;
   price: number;
-  category: {
-    id: number;
-    name: string;
-    image: string;
+  description: string;
+  category: string;
+  image: string;
+  rating: {
+    rate: number;
+    count: number;
   };
 };
 
@@ -57,7 +57,7 @@ export default async function ProductsIdPage({
     <div className="relative max-w-md rounded-xl bg-gradient-to-r from-neutral-600 to-violet-300 pt-0 shadow-lg">
       <div className="flex h-60 items-center justify-center">
         <Image
-          src={product.images?.[0] || ""}
+          src={product.image}
           alt={product.title}
           width={300}
           height={300}
@@ -82,10 +82,10 @@ export default async function ProductsIdPage({
           <CardTitle>{product.title}</CardTitle>
           <CardDescription className="flex items-center gap-2">
             <Badge variant="outline" className="rounded-sm">
-              {product.category.name}
+              {product.category}
             </Badge>
             <Badge variant="outline" className="rounded-sm">
-              {product.category.name}
+              ⭐ {product.rating.rate} ({product.rating.count})
             </Badge>
           </CardDescription>
         </CardHeader>

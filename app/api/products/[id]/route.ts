@@ -1,7 +1,7 @@
 // app/api/products/[id]/route.ts
 import { NextRequest, NextResponse } from "next/server";
 
-const API_BASE_URL = "https://api.escuelajs.co/api/v1";
+const API_BASE_URL = "https://fakestoreapi.com";
 
 export async function GET(
   request: NextRequest,

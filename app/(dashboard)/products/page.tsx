@@ -3,19 +3,19 @@ import Link from "next/link";
 
 type Product = {
   id: number;
-  category: {
-    id: number;
-    name: string;
-    image: string;
-  };
-  description: string;
-  images: string[];
-  price: number;
   title: string;
+  price: number;
+  description: string;
+  category: string;
+  image: string;
+  rating: {
+    rate: number;
+    count: number;
+  };
 };
 
 async function getProducts() {
-  const response = await fetch("http://localhost:3000/api/products", {
+  const response = await fetch("https://fakestoreapi.com/products", {
     cache: "no-store",
   });
 
@@ -43,7 +43,7 @@ export default async function ProductsPage() {
           >
             <div className="relative w-full h-48 overflow-hidden bg-gray-100">
               <Image
-                src={product.category.image}
+                src={product.image}
                 alt={product.title}
                 fill
                 className="object-cover hover:scale-110 transition-transform duration-300"
