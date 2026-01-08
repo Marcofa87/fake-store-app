@@ -26,7 +26,7 @@ export default async function ProductsPage() {
   const products = await getProducts();
 
   return (
-    <div className="min-h-screen bg-gray-50 p-4 sm:p-6 lg:p-8">
+    <div className="min-h-screen p-4 sm:p-6 lg:p-8">
       <h1 className="text-3xl font-bold mb-8 text-gray-900 text-center">
         Products
       </h1>
