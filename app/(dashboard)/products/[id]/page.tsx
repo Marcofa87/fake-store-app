@@ -55,19 +55,17 @@ export default async function ProductsIdPage({
                 {product.title}
               </h1>
             </div>
-
-            <div className="border-b border-gray-200 pb-6">
-              <p className="text-4xl sm:text-5xl font-bold text-blue-600">
-                €{product.price.toFixed(2)}
-              </p>
-            </div>
-
             <div className="grow">
-              <h2 className="text-lg font-semibold text-gray-900 mb-3">
+              <h2 className="text-lg font-semibold text-gray-900 mb-6">
                 Descrizione
               </h2>
               <p className="text-gray-700 leading-relaxed">
                 {product.description}
+              </p>
+            </div>
+            <div className="border-b border-gray-200 pb-6">
+              <p className="text-4xl sm:text-5xl font-bold text-blue-600">
+                €{product.price.toFixed(2)}
               </p>
             </div>
 
