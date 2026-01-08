@@ -23,10 +23,6 @@ type Product = {
   description: string;
   category: string;
   image: string;
-  rating: {
-    rate: number;
-    count: number;
-  };
 };
 
 async function getProductsId(id: string): Promise<Product> {
@@ -83,9 +79,6 @@ export default async function ProductsIdPage({
           <CardDescription className="flex items-center gap-2">
             <Badge variant="outline" className="rounded-sm">
               {product.category}
-            </Badge>
-            <Badge variant="outline" className="rounded-sm">
-              ⭐ {product.rating.rate} ({product.rating.count})
             </Badge>
           </CardDescription>
         </CardHeader>

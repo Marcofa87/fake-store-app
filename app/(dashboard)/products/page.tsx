@@ -8,10 +8,6 @@ type Product = {
   description: string;
   category: string;
   image: string;
-  rating: {
-    rate: number;
-    count: number;
-  };
 };
 
 async function getProducts() {
