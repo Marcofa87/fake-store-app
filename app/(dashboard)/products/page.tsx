@@ -35,7 +35,7 @@ export default async function ProductsPage() {
           <Link
             key={product.id}
             href={`/products/${product.id}`}
-            className="bg-white rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 overflow-hidden cursor-pointer flex flex-col group"
+            className="bg-white rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 overflow-hidden cursor-pointer flex flex-col group p-6"
           >
             <div className="relative w-full h-32 overflow-hidden bg-gray-100 flex items-center justify-center">
               <Image
