@@ -30,7 +30,7 @@ type Product = {
 };
 
 async function getProductsId(id: string): Promise<Product> {
-  const response = await fetch(`http://localhost:3000/api/products/${id}`, {
+  const response = await fetch(`https://fakestoreapi.com/products/${id}`, {
     cache: "no-store",
   });
 
