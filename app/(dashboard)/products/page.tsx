@@ -34,7 +34,7 @@ export default async function ProductsPage() {
       <h1 className="text-3xl font-bold mb-8 text-gray-900 text-center">
         Products
       </h1>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8 max-w-4/6 mx-auto">
         {products.map((product: Product) => (
           <Link
             key={product.id}
