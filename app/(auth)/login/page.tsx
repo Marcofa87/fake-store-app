@@ -8,7 +8,7 @@ interface LoginData {
   password: string;
 }
 
-function Page() {
+function LoginPage() {
   const { register, handleSubmit } = useForm<LoginData>();
   const onSubmit: SubmitHandler<LoginData> = (data) => {
     console.log(data);
@@ -32,7 +32,11 @@ function Page() {
             }}
           >
             <Form.Label
-              style={{ width: "100%", textAlign: "left", marginBottom: "10px" }}
+              style={{
+                width: "300px",
+                textAlign: "center",
+                marginBottom: "10px",
+              }}
               htmlFor="email"
             >
               Email
@@ -54,7 +58,7 @@ function Page() {
               />
             </Form.Control>
             <Form.Label
-              style={{ width: "100%", textAlign: "left" }}
+              style={{ width: "300px", textAlign: "center" }}
               htmlFor="password"
             >
               Password
@@ -69,6 +73,7 @@ function Page() {
                   backgroundColor: "white",
                   marginBottom: "10px",
                   width: "300px",
+                  textAlign: "center",
                 }}
                 className="b-border-2 border-gray-300 rounded-md"
                 type="password"
@@ -102,4 +107,4 @@ function Page() {
   );
 }
 
-export default Page;
+export default LoginPage;
