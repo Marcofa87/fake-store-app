@@ -27,7 +27,7 @@ function LoginPage() {
     setError(null);
 
     try {
-      const response = await fetch("/api/auth/login", {
+      const response = await fetch("/api/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -56,7 +56,9 @@ function LoginPage() {
       // Redirect alla dashboard o alla pagina principale
       router.push("/products");
     } catch (err) {
-      setError(err as string);
+      const errorMessage =
+        err instanceof Error ? err.message : "User doesn't exists";
+      setError(errorMessage);
       setIsLoading(false);
     }
   };
