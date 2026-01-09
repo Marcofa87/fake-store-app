@@ -56,7 +56,7 @@ function LoginPage() {
       // Redirect alla dashboard o alla pagina principale
       router.push("/products");
     } catch (err) {
-      setError("An error occurred. Please try again.");
+      setError(err as string);
       setIsLoading(false);
     }
   };
