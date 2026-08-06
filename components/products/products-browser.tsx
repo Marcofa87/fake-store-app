@@ -66,8 +66,8 @@ export function ProductsBrowser({
   };
 
   return (
-    <div className="max-w-4/6 mx-auto">
-      <div className="mb-8 flex flex-col gap-6 rounded-lg border border-gray-700 p-4 sm:p-6">
+    <div className="mx-auto w-full max-w-7xl">
+      <div className="mb-8 flex flex-col gap-6 rounded-xl border border-white/10 bg-[#0f1622] p-4 sm:p-6">
         <TextField.Root
           size="3"
           placeholder="Cerca nella descrizione..."
@@ -136,13 +136,13 @@ export function ProductsBrowser({
       </div>
 
       {filtered.length === 0 ? (
-        <div className="py-16 text-center">
+        <div className="rounded-xl border border-dashed border-white/10 py-16 text-center">
           <Text size="3" color="gray">
             Nessun prodotto trovato con questi filtri.
           </Text>
         </div>
       ) : (
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8">
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3 xl:grid-cols-4">
           {filtered.map((product) => (
             <ProductCard key={product.id} product={product} />
           ))}
