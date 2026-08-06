@@ -11,6 +11,7 @@ import {
   Menu,
   Shirt,
   ShoppingBag,
+  ShoppingCartIcon,
   StoreIcon,
   X,
   type LucideIcon,
@@ -19,6 +20,8 @@ import {
 import { useAuth } from "@/components/auth/auth-provider";
 import { CATEGORIES } from "@/lib/categories";
 import { cn } from "@/lib/utils";
+import { useAppSelector } from "@/store";
+import { selectCartCount, selectCartHydrated } from "@/store/cart-slice";
 
 const CATEGORY_ICONS: Record<string, LucideIcon> = {
   electronics: LaptopIcon,
@@ -40,6 +43,10 @@ export function Sidebar() {
   const pathname = usePathname();
   const { username, logout, isLoggingOut } = useAuth();
   const [isOpen, setIsOpen] = useState(false);
+  const cartCount = useAppSelector(selectCartCount);
+  // Il server non conosce localStorage: mostrare il badge prima dell'idratazione
+  // provocherebbe un mismatch di hydration.
+  const isCartHydrated = useAppSelector(selectCartHydrated);
 
   useEffect(() => {
     setIsOpen(false);
@@ -118,6 +125,31 @@ export function Sidebar() {
                 </li>
               );
             })}
+          </ul>
+
+          <p className="px-3 pb-2 pt-6 text-xs font-semibold uppercase tracking-wider text-gray-500">
+            Acquisti
+          </p>
+          <ul className="flex flex-col gap-1">
+            <li>
+              <Link
+                href="/cart"
+                className={cn(
+                  "flex items-center gap-3 rounded-md px-3 py-2 text-sm transition-colors",
+                  pathname === "/cart"
+                    ? "bg-white/10 font-medium text-white"
+                    : "text-gray-400 hover:bg-white/5 hover:text-white"
+                )}
+              >
+                <ShoppingCartIcon size={18} />
+                Carrello
+                {isCartHydrated && cartCount > 0 && (
+                  <span className="ml-auto rounded-full bg-amber-300 px-2 py-0.5 text-xs font-bold text-[#0f1622]">
+                    {cartCount}
+                  </span>
+                )}
+              </Link>
+            </li>
           </ul>
         </nav>
 

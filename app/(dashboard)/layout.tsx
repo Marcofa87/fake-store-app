@@ -4,6 +4,7 @@ import { redirect } from "next/navigation";
 
 import { AuthProvider } from "@/components/auth/auth-provider";
 import { Sidebar } from "@/components/layout/sidebar";
+import { StoreProvider } from "@/components/providers/store-provider";
 import { AUTH_TOKEN_COOKIE, AUTH_USERNAME_COOKIE } from "@/lib/auth";
 
 async function Layout({ children }: { children: React.ReactNode }) {
@@ -18,12 +19,14 @@ async function Layout({ children }: { children: React.ReactNode }) {
   const username = cookieStore.get(AUTH_USERNAME_COOKIE)?.value ?? null;
 
   return (
-    <AuthProvider username={username}>
-      <div className="min-h-screen lg:flex">
-        <Sidebar />
-        <main className="min-w-0 flex-1">{children}</main>
-      </div>
-    </AuthProvider>
+    <StoreProvider>
+      <AuthProvider username={username}>
+        <div className="min-h-screen lg:flex">
+          <Sidebar />
+          <main className="min-w-0 flex-1">{children}</main>
+        </div>
+      </AuthProvider>
+    </StoreProvider>
   );
 }
 

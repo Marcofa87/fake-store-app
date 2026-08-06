@@ -3,6 +3,7 @@ import Image from "next/image";
 
 import { HeartIcon, StarIcon } from "lucide-react";
 
+import { AddToCartButton } from "@/components/cart/add-to-cart-button";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 
@@ -73,12 +74,7 @@ export default async function ProductsIdPage({
             </div>
 
             <div>
-              <Button
-                size="lg"
-                className="w-full sm:w-auto px-8 py-6 text-lg text-blue-700 cursor-pointer hover:text-blue-800 font-bold bg-amber-300"
-              >
-                Add to cart
-              </Button>
+              <AddToCartButton product={product} />
             </div>
           </div>
 
