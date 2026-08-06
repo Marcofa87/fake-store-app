@@ -1,6 +1,12 @@
 // app/api/(auth)/login/route.ts
 import { NextRequest, NextResponse } from "next/server";
 
+import {
+  AUTH_TOKEN_COOKIE,
+  AUTH_USERNAME_COOKIE,
+  authCookieOptions,
+} from "@/lib/auth";
+
 const API_BASE_URL = "https://fakestoreapi.com";
 
 export async function POST(request: NextRequest) {
@@ -35,7 +41,21 @@ export async function POST(request: NextRequest) {
     }
 
     const data = await response.json();
-    return NextResponse.json(data, { status: 200 });
+
+    if (!data?.token) {
+      return NextResponse.json(
+        { error: "Risposta di login non valida" },
+        { status: 502 }
+      );
+    }
+
+    // Il token resta in un cookie httpOnly: non è leggibile da JavaScript e
+    // viaggia da solo a ogni richiesta, così la sessione sopravvive al refresh.
+    const res = NextResponse.json({ username }, { status: 200 });
+    res.cookies.set(AUTH_TOKEN_COOKIE, data.token, authCookieOptions);
+    res.cookies.set(AUTH_USERNAME_COOKIE, username, authCookieOptions);
+
+    return res;
   } catch (error) {
     console.error("Login error:", error);
     return NextResponse.json(

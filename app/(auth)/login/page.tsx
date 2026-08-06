@@ -6,7 +6,6 @@ import Image from "next/image";
 import backgroundImg from "@/public/intro.svg";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { useAuth } from "@/components/auth/auth-provider";
 
 interface LoginData {
   username: string;
@@ -22,7 +21,6 @@ function LoginPage() {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const router = useRouter();
-  const { login } = useAuth();
 
   const onSubmit: SubmitHandler<LoginData> = async (data) => {
     setIsLoading(true);
@@ -48,14 +46,10 @@ function LoginPage() {
         return;
       }
 
-      if (!result.token) {
-        setError("Risposta di login non valida");
-        setIsLoading(false);
-        return;
-      }
-
-      login(result.token, data.username);
-      router.push("/products");
+      // Il token è già nel cookie httpOnly impostato dalla route: basta
+      // rileggere lo stato dal server per entrare nell'area protetta.
+      router.replace("/products");
+      router.refresh();
     } catch (err) {
       const errorMessage =
         err instanceof Error ? err.message : "User doesn't exists";

@@ -38,7 +38,7 @@ const NAV_ITEMS: { href: string; label: string; icon: LucideIcon }[] = [
 
 export function Sidebar() {
   const pathname = usePathname();
-  const { username, logout } = useAuth();
+  const { username, logout, isLoggingOut } = useAuth();
   const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
@@ -129,11 +129,12 @@ export function Sidebar() {
           )}
           <button
             type="button"
-            onClick={logout}
-            className="flex w-full items-center gap-3 rounded-md px-3 py-2 text-sm text-gray-400 transition-colors hover:bg-white/5 hover:text-white cursor-pointer"
+            onClick={() => void logout()}
+            disabled={isLoggingOut}
+            className="flex w-full items-center gap-3 rounded-md px-3 py-2 text-sm text-gray-400 transition-colors hover:bg-white/5 hover:text-white cursor-pointer disabled:cursor-not-allowed disabled:opacity-60"
           >
             <LogOut size={18} />
-            Esci
+            {isLoggingOut ? "Uscita..." : "Esci"}
           </button>
         </div>
       </aside>

@@ -1,39 +1,47 @@
 "use client";
 
 import { createContext, useCallback, useContext, useMemo, useState } from "react";
+import { useRouter } from "next/navigation";
 
-type AuthState = {
-  token: string | null;
+type AuthContextValue = {
   username: string | null;
-};
-
-type AuthContextValue = AuthState & {
   isAuthenticated: boolean;
-  login: (token: string, username: string) => void;
-  logout: () => void;
+  isLoggingOut: boolean;
+  logout: () => Promise<void>;
 };
 
 const AuthContext = createContext<AuthContextValue | null>(null);
 
-export function AuthProvider({ children }: { children: React.ReactNode }) {
-  const [state, setState] = useState<AuthState>({ token: null, username: null });
+export function AuthProvider({
+  username,
+  children,
+}: {
+  username: string | null;
+  children: React.ReactNode;
+}) {
+  const router = useRouter();
+  const [isLoggingOut, setIsLoggingOut] = useState(false);
 
-  const login = useCallback((token: string, username: string) => {
-    setState({ token, username });
-  }, []);
+  const logout = useCallback(async () => {
+    setIsLoggingOut(true);
 
-  const logout = useCallback(() => {
-    setState({ token: null, username: null });
-  }, []);
+    try {
+      await fetch("/api/logout", { method: "POST" });
+      router.replace("/login");
+      router.refresh();
+    } finally {
+      setIsLoggingOut(false);
+    }
+  }, [router]);
 
   const value = useMemo<AuthContextValue>(
     () => ({
-      ...state,
-      isAuthenticated: state.token !== null,
-      login,
+      username,
+      isAuthenticated: username !== null,
+      isLoggingOut,
       logout,
     }),
-    [state, login, logout]
+    [username, isLoggingOut, logout]
   );
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;

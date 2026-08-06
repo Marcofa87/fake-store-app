@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { Theme } from "@radix-ui/themes";
-import { AuthProvider } from "@/components/auth/auth-provider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -33,7 +32,7 @@ export default function RootLayout({
           appearance="dark"
           style={{ background: "var(--color-page-background)" }}
         >
-          <AuthProvider>{children}</AuthProvider>
+          {children}
         </Theme>
       </body>
     </html>
