@@ -18,7 +18,13 @@ function priceBounds(products: Product[]): [number, number] {
   return [Math.floor(Math.min(...prices)), Math.ceil(Math.max(...prices))];
 }
 
-export function ProductsBrowser({ products }: { products: Product[] }) {
+export function ProductsBrowser({
+  products,
+  showCategoryFilter = true,
+}: {
+  products: Product[];
+  showCategoryFilter?: boolean;
+}) {
   const [minPrice, maxPrice] = useMemo(() => priceBounds(products), [products]);
 
   const categories = useMemo(
@@ -72,25 +78,27 @@ export function ProductsBrowser({ products }: { products: Product[] }) {
           </TextField.Slot>
         </TextField.Root>
 
-        <div className="flex flex-wrap items-center gap-2">
-          <Button
-            variant={category === ALL_CATEGORIES ? "solid" : "soft"}
-            onClick={() => setCategory(ALL_CATEGORIES)}
-            style={{ cursor: "pointer", textTransform: "capitalize" }}
-          >
-            Tutte
-          </Button>
-          {categories.map((item) => (
+        {showCategoryFilter && (
+          <div className="flex flex-wrap items-center gap-2">
             <Button
-              key={item}
-              variant={category === item ? "solid" : "soft"}
-              onClick={() => setCategory(item)}
+              variant={category === ALL_CATEGORIES ? "solid" : "soft"}
+              onClick={() => setCategory(ALL_CATEGORIES)}
               style={{ cursor: "pointer", textTransform: "capitalize" }}
             >
-              {item}
+              Tutte
             </Button>
-          ))}
-        </div>
+            {categories.map((item) => (
+              <Button
+                key={item}
+                variant={category === item ? "solid" : "soft"}
+                onClick={() => setCategory(item)}
+                style={{ cursor: "pointer", textTransform: "capitalize" }}
+              >
+                {item}
+              </Button>
+            ))}
+          </div>
+        )}
 
         <div className="flex flex-col gap-3">
           <div className="flex items-center justify-between">
