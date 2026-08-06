@@ -1,0 +1,33 @@
+@import "tailwindcss";
+@import "@radix-ui/themes/styles.css";
+
+
+:root {
+  --background: #111927;
+  --foreground: #171717;
+  
+  
+  /* Variabili Radix UI Themes per personalizzare lo sfondo */
+  --color-page-background: var(--background);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+    --color-page-background: var(--background);
+  }
+}
+
+body {
+  background: var(--color-page-background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+}
