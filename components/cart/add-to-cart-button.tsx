@@ -9,7 +9,14 @@ import type { Product } from "@/lib/types";
 import { useAppDispatch, useAppSelector } from "@/store";
 import { itemAdded, selectCartQuantityById } from "@/store/cart-slice";
 
-export function AddToCartButton({ product }: { product: Product }) {
+export function AddToCartButton({
+  product,
+  compact = false,
+}: {
+  product: Product;
+  /** Variante ridotta per le card della griglia prodotti. */
+  compact?: boolean;
+}) {
   const dispatch = useAppDispatch();
   const quantityInCart = useAppSelector(selectCartQuantityById(product.id));
   const [justAdded, setJustAdded] = useState(false);
@@ -32,6 +39,33 @@ export function AddToCartButton({ product }: { product: Product }) {
     }
     timeoutRef.current = setTimeout(() => setJustAdded(false), 2000);
   };
+
+  if (compact) {
+    return (
+      <Button
+        type="button"
+        size="sm"
+        onClick={handleAdd}
+        aria-label={`Aggiungi ${product.title} al carrello`}
+        className="relative z-20 w-full cursor-pointer bg-amber-300 font-semibold text-[#0f1622] hover:bg-amber-200"
+      >
+        {justAdded ? (
+          <>
+            <CheckIcon /> Aggiunto
+          </>
+        ) : (
+          <>
+            <ShoppingCartIcon /> Aggiungi
+          </>
+        )}
+        {quantityInCart > 0 && (
+          <span className="absolute right-2 rounded-full bg-[#0f1622] px-1.5 py-0.5 text-[11px] font-bold text-amber-300">
+            {quantityInCart}
+          </span>
+        )}
+      </Button>
+    );
+  }
 
   return (
     <div className="flex flex-col gap-3">
