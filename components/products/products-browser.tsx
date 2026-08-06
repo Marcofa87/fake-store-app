@@ -28,8 +28,9 @@ export function ProductsBrowser({
   const [minPrice, maxPrice] = useMemo(() => priceBounds(products), [products]);
 
   const categories = useMemo(
-    () => Array.from(new Set(products.map((product) => product.category))).sort(),
-    [products]
+    () =>
+      Array.from(new Set(products.map((product) => product.category))).sort(),
+    [products],
   );
 
   const [category, setCategory] = useState<string>(ALL_CATEGORIES);
@@ -46,7 +47,7 @@ export function ProductsBrowser({
         product.price >= range[0] && product.price <= range[1];
       const matchesQuery =
         normalizedQuery === "" ||
-        product.description.toLowerCase().includes(normalizedQuery);
+        product.title.toLowerCase().includes(normalizedQuery);
 
       return matchesCategory && matchesPrice && matchesQuery;
     });
