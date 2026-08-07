@@ -83,6 +83,17 @@ function LoginPage() {
           >
             Login to your account to continue
           </p>
+          <p
+            style={{
+              textAlign: "center",
+              marginTop: "8px",
+              marginBottom: "8px",
+              fontSize: "14px",
+              color: "#555",
+            }}
+          >
+            Demo: username <strong>admin</strong> · password <strong>1234</strong>
+          </p>
 
           <Form.Root className="FormRoot" onSubmit={handleSubmit(onSubmit)}>
             <Form.Field className="FormField" name="username">
