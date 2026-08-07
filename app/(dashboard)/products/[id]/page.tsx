@@ -7,38 +7,25 @@ import { AddToCartButton } from "@/components/cart/add-to-cart-button";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 
+import { getProductById } from "@/lib/products";
 import { cn } from "@/lib/utils";
-import type { Product } from "@/lib/types";
-
-async function getProductsId(id: string): Promise<Product> {
-  const response = await fetch(`https://fakestoreapi.com/products/${id}`, {
-    cache: "no-store",
-  });
-
-  if (!response.ok) {
-    if (response.status === 404 || response.status === 400) {
-      notFound();
-    }
-    throw new Error("Failed to fetch product");
-  }
-
-  return response.json();
-}
 
 export default async function ProductsIdPage({
   params,
 }: {
   params: Promise<{ id: string }>;
 }) {
-  /*  const [liked, setLiked] = useState<boolean>(false); */
   const { id } = await params;
-  const product = await getProductsId(id);
+  const product = getProductById(id);
+
+  if (!product) {
+    notFound();
+  }
 
   return (
     <div className="min-h-3/5 bg-gray-50 py-8 px-4 sm:px-6 lg:px-8 ">
       <div className="max-w-6xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
-          {/* Colonna sinistra: Testo e button */}
           <div className="flex flex-col space-y-6">
             <div>
               <Badge variant="outline" className="mb-3">
@@ -78,27 +65,21 @@ export default async function ProductsIdPage({
             </div>
           </div>
 
-          {/* Colonna destra: Solo immagine */}
           <div className="relative aspect-square bg-gray-100 rounded-lg overflow-hidden flex items-center justify-center">
             <Image
               src={product.image}
               alt={product.title}
               fill
+              unoptimized
               className="object-contain p-8"
               sizes="(max-width: 768px) 100vw, 50vw"
               priority
             />
             <Button
               size="icon"
-              /* onClick={() => setLiked(!liked)} */
               className="bg-white/80 hover:bg-white absolute top-4 right-4 rounded-full shadow-md"
             >
-              <HeartIcon
-                className={cn(
-                  /* liked ? "fill-destructive stroke-destructive" : "stroke-gray-700" */
-                  "stroke-gray-700"
-                )}
-              />
+              <HeartIcon className={cn("stroke-gray-700")} />
               <span className="sr-only">Like</span>
             </Button>
           </div>

@@ -1,20 +1,8 @@
 import { ProductsBrowser } from "@/components/products/products-browser";
-import type { Product } from "@/lib/types";
-
-async function getProducts(): Promise<Product[]> {
-  const response = await fetch("https://fakestoreapi.com/products", {
-    cache: "no-store",
-  });
-
-  if (!response.ok) {
-    throw new Error("Failed to fetch products");
-  }
-
-  return response.json();
-}
+import { getProducts } from "@/lib/products";
 
 export default async function ProductsPage() {
-  const products = await getProducts();
+  const products = getProducts();
 
   return (
     <div className="min-h-screen p-4 sm:p-6 lg:p-8">
