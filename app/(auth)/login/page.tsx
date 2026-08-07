@@ -89,10 +89,11 @@ function LoginPage() {
               marginTop: "8px",
               marginBottom: "8px",
               fontSize: "14px",
-              color: "#555",
+              color: "#fff",
             }}
           >
-            Demo: username <strong>admin</strong> · password <strong>1234</strong>
+            Demo: username <strong>admin</strong> · password{" "}
+            <strong>1234</strong>
           </p>
 
           <Form.Root className="FormRoot" onSubmit={handleSubmit(onSubmit)}>
