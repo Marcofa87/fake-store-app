@@ -17,7 +17,12 @@ function LoginPage() {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<LoginData>();
+  } = useForm<LoginData>({
+    defaultValues: {
+      username: "admin",
+      password: "1234",
+    },
+  });
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const router = useRouter();
